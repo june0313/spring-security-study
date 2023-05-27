@@ -1,13 +1,13 @@
-package com.example.security;
+package com.example.security.reactive;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringSecurityStudyApplication {
+public class ReactiveWebApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringSecurityStudyApplication.class, args);
+        SpringApplication.run(ReactiveWebApplication.class, args);
     }
 
 }

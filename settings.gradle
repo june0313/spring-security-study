@@ -1,1 +1,3 @@
 rootProject.name = 'spring-security-study'
+include 'security-reactive-web'
+include 'security-blocking-web'
