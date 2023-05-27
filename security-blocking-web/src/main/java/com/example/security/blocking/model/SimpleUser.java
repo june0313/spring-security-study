@@ -1,4 +1,4 @@
-package com.example.security.blocking.user;
+package com.example.security.blocking.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -6,20 +6,31 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-public class DummyUser implements UserDetails {
+public class SimpleUser implements UserDetails {
+
+    private final String username;
+    private final String password;
+    private final String authority;
+
+    public SimpleUser(String username, String password, String authority) {
+        this.username = username;
+        this.password = password;
+        this.authority = authority;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(() -> "READ");
+        return List.of(() -> authority);
     }
 
     @Override
     public String getPassword() {
-        return "12345";
+        return this.password;
     }
 
     @Override
     public String getUsername() {
-        return "bill";
+        return this.username;
     }
 
     @Override

@@ -1,30 +1,25 @@
-package com.example.security.blocking.user;
+package com.example.security.blocking.model;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 
-@RequiredArgsConstructor
-public class SimpleUser implements UserDetails {
-
-    private final String username;
-    private final String password;
-
+public class DummyUser implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return List.of(() -> "READ");
     }
 
     @Override
     public String getPassword() {
-        return this.password;
+        return "12345";
     }
 
     @Override
     public String getUsername() {
-        return this.username;
+        return "bill";
     }
 
     @Override
