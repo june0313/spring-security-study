@@ -31,7 +31,7 @@ public class ProjectConfig {
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         return http.httpBasic()
                 .and()
-                .authorizeExchange().anyExchange().permitAll()
+                .authorizeExchange().anyExchange().authenticated()
                 .and()
                 .build();
     }
