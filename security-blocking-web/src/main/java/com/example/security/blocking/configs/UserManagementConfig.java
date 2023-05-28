@@ -14,7 +14,14 @@ public class UserManagementConfig {
 
     @Bean
     public UserDetailsService userDetailsService(DataSource dataSource) {
-        return new JdbcUserDetailsManager(dataSource);
+        var usersByUsernameQuery = "select username, password, enabled from members where username = ?";
+        var authsByUserQuery = "select username, role from roles where username = ?";
+
+        var jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
+        jdbcUserDetailsManager.setUsersByUsernameQuery(usersByUsernameQuery);
+        jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(authsByUserQuery);
+
+        return jdbcUserDetailsManager;
     }
 
     @Bean

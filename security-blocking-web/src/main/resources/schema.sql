@@ -1,4 +1,4 @@
-create table if not exists `spring`.`users` (
+create table if not exists `spring`.`members` (
     `id` int not null auto_increment,
     `username` varchar(45) not null,
     `password` varchar(45) not null,
@@ -6,9 +6,9 @@ create table if not exists `spring`.`users` (
     primary key (`id`)
 );
 
-create table if not exists `spring`.`authorities` (
+create table if not exists `spring`.`roles` (
     `id` int not null auto_increment,
     `username` varchar(45) not null,
-    `authority` varchar(45) not null,
+    `role` varchar(45) not null,
     primary key (`id`)
 );

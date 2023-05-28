@@ -1,2 +1,2 @@
-insert ignore into `spring`.`authorities` VALUES (1, 'john', 'write');
-insert ignore into `spring`.`users` VALUES (1, 'john', '12345', '1');
+insert ignore into `spring`.`roles` VALUES (1, 'june', 'read');
+insert ignore into `spring`.`members` VALUES (1, 'june', '1234', '1');
