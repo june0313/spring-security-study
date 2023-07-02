@@ -48,6 +48,7 @@ public class ProjectConfig {
         http.authorizeHttpRequests(auth ->
                 auth.requestMatchers("/hello").hasRole("ADMIN")
                         .requestMatchers("/ciao").hasRole("MANAGER")
+                        .anyRequest().authenticated()
         );
 
         return http.build();
