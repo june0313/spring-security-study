@@ -1,5 +1,6 @@
 package com.jun.ss.config;
 
+import com.jun.ss.filters.AuthenticationLoggingFilter;
 import com.jun.ss.filters.RequestValidationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +13,16 @@ public class ProjectConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.addFilterBefore(new RequestValidationFilter(), BasicAuthenticationFilter.class);
-        http.authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
-
-        return http.build();
+        return http
+                .addFilterBefore(
+                        new RequestValidationFilter(),
+                        BasicAuthenticationFilter.class)
+                .addFilterAfter(
+                        new AuthenticationLoggingFilter(),
+                        BasicAuthenticationFilter.class)
+                .authorizeHttpRequests(auth ->
+                        auth.anyRequest().permitAll()
+                )
+                .build();
     }
 }
